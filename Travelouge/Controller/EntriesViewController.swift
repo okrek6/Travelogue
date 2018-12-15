@@ -14,6 +14,8 @@ class EntriesViewController: UIViewController {
     
     @IBOutlet weak var entriesTableView: UITableView!
     
+    var enteries: [Entry] = []
+    
     let dateFormatter = DateFormatter()
     
     var trip: Trip?
@@ -27,6 +29,22 @@ class EntriesViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<Entry> = Entry.fetchRequest()
+        var fetchedEntries: [Entry] = []
+        do {
+            fetchedEntries = try managedContext.fetch(fetchRequest)
+            entriesTableView.reloadData()
+        } catch {
+            print("Could not fetch")
+        }
+        
+        enteries.removeAll()
+        enteries = fetchedEntries
         self.entriesTableView.reloadData()
     }
     
