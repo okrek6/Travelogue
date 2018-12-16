@@ -7,6 +7,7 @@
 
 
 import UIKit
+import CoreData
 
 class NewEntriesViewController: UIViewController {
     
@@ -15,6 +16,7 @@ class NewEntriesViewController: UIViewController {
     @IBOutlet weak var datePicker: UIDatePicker!
     
     var trip: Trip?
+    var newEntry: Entry?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,21 +37,36 @@ class NewEntriesViewController: UIViewController {
     }
     
     @IBAction func saveEntry(_ sender: Any) {
-        let name = titleText.text ?? ""
-        let desc = descriptionText.text ?? ""
+        guard let name = titleText.text else {
+            return
+        }
+        guard let desc = descriptionText.text else {
+            return
+        }
         let date = Date()
-        
-        if let entry = Entry(name: name, desc: desc, rawDate: date) {
-            trip?.addToRawEntries(entry)
+
+        var entry: Entry?
             
+        if let existingEntry = newEntry {
+            entry = existingEntry
+            entry?.name = name
+            entry?.desc = desc
+            entry?.date = date
+        } else {
+            entry = Entry(name: name, desc: desc, rawDate: date)
+        }
+        
+        if let entry = entry {
             do {
-                try entry.managedObjectContext?.save()
-                
-                self.navigationController?.popViewController(animated: true)
+                let managedObjectContext = entry.managedObjectContext
+                try managedObjectContext?.save()
             } catch {
-                print("Could not save")
+                print("Entry could not be saved")
+                return
             }
         }
+        
+       _ = navigationController?.popViewController(animated: true)
     }
 }
 

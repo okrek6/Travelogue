@@ -14,7 +14,7 @@ class EntriesViewController: UIViewController {
     
     @IBOutlet weak var entriesTableView: UITableView!
     
-    var enteries: [Entry] = []
+    var entries: [Entry] = []
     
     let dateFormatter = DateFormatter()
     
@@ -25,6 +25,7 @@ class EntriesViewController: UIViewController {
         
         dateFormatter.timeStyle = .long
         dateFormatter.dateStyle = .long
+        entriesTableView.reloadData()
         
     }
     
@@ -43,9 +44,9 @@ class EntriesViewController: UIViewController {
             print("Could not fetch")
         }
         
-        enteries.removeAll()
-        enteries = fetchedEntries
-        self.entriesTableView.reloadData()
+        entries.removeAll()
+        entries = fetchedEntries
+        entriesTableView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
@@ -111,6 +112,6 @@ extension EntriesViewController: UITableViewDataSource {
 
 extension EntriesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "showEntry", sender: self)
+        performSegue(withIdentifier: "viewEntry", sender: self)
     }
 }
