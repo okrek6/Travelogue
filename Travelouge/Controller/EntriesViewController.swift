@@ -89,17 +89,13 @@ class EntriesViewController: UIViewController {
 
 extension EntriesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return trip?.rawEntries?.count ?? 0
+        return entries.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = entriesTableView.dequeueReusableCell(withIdentifier: "entryCell", for: indexPath)
+
         
-        //        if let entry = trip?.rawEntries?[indexPath.row] {
-        //            cell.textLabel?.text = entry.name
-        //            cell.detailTextLabel?.text = entry.desc
-        //        }
-        //
         return cell
     }
     
