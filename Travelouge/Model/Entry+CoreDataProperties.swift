@@ -18,7 +18,7 @@ extension Entry {
     }
 
     @NSManaged public var desc: String?
-    @NSManaged public var image: NSData?
+    @NSManaged public var rawImage: NSData?
     @NSManaged public var name: String?
     @NSManaged public var rawDate: NSDate?
     @NSManaged public var trip: Trip?
