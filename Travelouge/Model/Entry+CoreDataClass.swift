@@ -2,8 +2,8 @@
 //  Entry+CoreDataClass.swift
 //  Travelouge
 //
-//  Created by Brendan Krekeler on 12/4/18.
-//  Copyright © 2018 Brendan Krekeler. All rights reserved.
+//  Created by Brendan Krekeler on 1/4/19.
+//  Copyright © 2019 Brendan Krekeler. All rights reserved.
 //
 //
 
@@ -35,14 +35,14 @@ public class Entry: NSManagedObject {
         }
     }
     
-    convenience init?(name: String?, desc: String?, rawDate: Date?, image: UIImage?) {
+    convenience init?(name: String?, desc: String?, rawDate: Date?, image: UIImage?, trip: Trip) {
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         
-        guard let context = appDelegate?.persistentContainer.viewContext else {
+        guard let managedContext = appDelegate?.persistentContainer.viewContext else {
             return nil
         }
         
-        self.init(entity: Entry.entity(), insertInto: context)
+        self.init(entity: Entry.entity(), insertInto: managedContext)
         
         self.name = name
         self.desc = desc
@@ -51,13 +51,16 @@ public class Entry: NSManagedObject {
         if let image = image {
             self.rawImage = convertImageToNSData(image: image)
         }
+        
+        self.trip = trip
     }
     
-    func update(name: String, desc: String?, date: Date, image: UIImage) {
+    func update(name: String, desc: String?, rawDate: Date, image: UIImage, trip: Trip) {
         self.name = name
         self.desc = desc
-        self.date = rawDate! as Date
+        self.date = rawDate as Date
         self.rawImage = convertImageToNSData(image: image)
+        self.trip = trip 
     }
     
     func convertImageToNSData(image: UIImage) -> NSData? {
@@ -76,6 +79,7 @@ public class Entry: NSManagedObject {
         UIGraphicsBeginImageContext(image.size)
         
         image.draw(in: CGRect(origin: CGPoint.zero, size: image.size), blendMode: .copy, alpha: 1.0)
+        
         let copy = UIGraphicsGetImageFromCurrentImageContext()
         
         UIGraphicsEndImageContext()

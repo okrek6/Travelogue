@@ -68,14 +68,20 @@ class SingleEntriesViewController: UIViewController, UIImagePickerControllerDele
         
         let desc = descriptionText.text
         
-        if let entry = entry {
-            entry.name = name
-            entry.desc = desc
-            entry.image = image
-            
+        if entry == nil {
+            // document doesn't exist, create new one
+            if let trip = trip {
+                entry = Entry(name: name, desc: desc, rawDate: Date.init(timeIntervalSinceNow: 0), image: image, trip: trip)
+            }
         } else {
-            entry = Entry(name: name, desc: desc, rawDate: Date.init(timeIntervalSinceNow: 0), image: image)
+            // document exists, update existing one
+            if let trip = trip {
+                //document?.update(name: documentName, content: content, category: category)
+                entry?.update(name: name, desc: desc, rawDate: Date.init(timeIntervalSinceNow: 0), image: image, trip: trip)
+            }
         }
+        
+       // Date.init(timeIntervalSinceNow: 0)
         
         if let entry = entry {
             do {

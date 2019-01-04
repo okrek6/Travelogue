@@ -7,10 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E207E68321B7644A00EB6AFA /* Trip+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E207E67F21B7644A00EB6AFA /* Trip+CoreDataClass.swift */; };
-		E207E68421B7644A00EB6AFA /* Trip+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E207E68021B7644A00EB6AFA /* Trip+CoreDataProperties.swift */; };
-		E207E68521B7644A00EB6AFA /* Entry+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E207E68121B7644A00EB6AFA /* Entry+CoreDataClass.swift */; };
-		E207E68621B7644A00EB6AFA /* Entry+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E207E68221B7644A00EB6AFA /* Entry+CoreDataProperties.swift */; };
 		E207E69021B7ADDF00EB6AFA /* TripsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E207E68F21B7ADDF00EB6AFA /* TripsViewController.swift */; };
 		E207E69221B7B00F00EB6AFA /* EntriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E207E69121B7B00F00EB6AFA /* EntriesViewController.swift */; };
 		E207E69421B7B05700EB6AFA /* NewTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E207E69321B7B05700EB6AFA /* NewTripViewController.swift */; };
@@ -21,13 +17,13 @@
 		E21300ED21B4E75A0008D933 /* Travelouge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E21300EB21B4E75A0008D933 /* Travelouge.xcdatamodeld */; };
 		E21300EF21B4E75C0008D933 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E21300EE21B4E75C0008D933 /* Assets.xcassets */; };
 		E21300F221B4E75C0008D933 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E21300F021B4E75C0008D933 /* LaunchScreen.storyboard */; };
+		E2ED029821DFD94F00AD95A8 /* Trip+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2ED029421DFD94F00AD95A8 /* Trip+CoreDataClass.swift */; };
+		E2ED029921DFD94F00AD95A8 /* Trip+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2ED029521DFD94F00AD95A8 /* Trip+CoreDataProperties.swift */; };
+		E2ED029A21DFD94F00AD95A8 /* Entry+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2ED029621DFD94F00AD95A8 /* Entry+CoreDataClass.swift */; };
+		E2ED029B21DFD94F00AD95A8 /* Entry+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2ED029721DFD94F00AD95A8 /* Entry+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		E207E67F21B7644A00EB6AFA /* Trip+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Trip+CoreDataClass.swift"; sourceTree = "<group>"; };
-		E207E68021B7644A00EB6AFA /* Trip+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Trip+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		E207E68121B7644A00EB6AFA /* Entry+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Entry+CoreDataClass.swift"; sourceTree = "<group>"; };
-		E207E68221B7644A00EB6AFA /* Entry+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Entry+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E207E68F21B7ADDF00EB6AFA /* TripsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripsViewController.swift; sourceTree = "<group>"; };
 		E207E69121B7B00F00EB6AFA /* EntriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntriesViewController.swift; sourceTree = "<group>"; };
 		E207E69321B7B05700EB6AFA /* NewTripViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTripViewController.swift; sourceTree = "<group>"; };
@@ -40,6 +36,10 @@
 		E21300EE21B4E75C0008D933 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E21300F121B4E75C0008D933 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E21300F321B4E75C0008D933 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E2ED029421DFD94F00AD95A8 /* Trip+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Trip+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E2ED029521DFD94F00AD95A8 /* Trip+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Trip+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E2ED029621DFD94F00AD95A8 /* Entry+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Entry+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E2ED029721DFD94F00AD95A8 /* Entry+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Entry+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,10 +57,10 @@
 			isa = PBXGroup;
 			children = (
 				E21300EB21B4E75A0008D933 /* Travelouge.xcdatamodeld */,
-				E207E67F21B7644A00EB6AFA /* Trip+CoreDataClass.swift */,
-				E207E68021B7644A00EB6AFA /* Trip+CoreDataProperties.swift */,
-				E207E68121B7644A00EB6AFA /* Entry+CoreDataClass.swift */,
-				E207E68221B7644A00EB6AFA /* Entry+CoreDataProperties.swift */,
+				E2ED029421DFD94F00AD95A8 /* Trip+CoreDataClass.swift */,
+				E2ED029521DFD94F00AD95A8 /* Trip+CoreDataProperties.swift */,
+				E2ED029621DFD94F00AD95A8 /* Entry+CoreDataClass.swift */,
+				E2ED029721DFD94F00AD95A8 /* Entry+CoreDataProperties.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -187,15 +187,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				E207E69021B7ADDF00EB6AFA /* TripsViewController.swift in Sources */,
-				E207E68621B7644A00EB6AFA /* Entry+CoreDataProperties.swift in Sources */,
+				E2ED029A21DFD94F00AD95A8 /* Entry+CoreDataClass.swift in Sources */,
 				E207E69421B7B05700EB6AFA /* NewTripViewController.swift in Sources */,
 				E21300E521B4E75A0008D933 /* AppDelegate.swift in Sources */,
-				E207E68321B7644A00EB6AFA /* Trip+CoreDataClass.swift in Sources */,
-				E207E68421B7644A00EB6AFA /* Trip+CoreDataProperties.swift in Sources */,
 				E21187C221C7461800E84114 /* EntriesTableViewCell.swift in Sources */,
 				E207E69621B7B1D500EB6AFA /* SingleEntriesViewController.swift in Sources */,
-				E207E68521B7644A00EB6AFA /* Entry+CoreDataClass.swift in Sources */,
+				E2ED029B21DFD94F00AD95A8 /* Entry+CoreDataProperties.swift in Sources */,
+				E2ED029921DFD94F00AD95A8 /* Trip+CoreDataProperties.swift in Sources */,
 				E21300ED21B4E75A0008D933 /* Travelouge.xcdatamodeld in Sources */,
+				E2ED029821DFD94F00AD95A8 /* Trip+CoreDataClass.swift in Sources */,
 				E207E69221B7B00F00EB6AFA /* EntriesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

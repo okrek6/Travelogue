@@ -2,8 +2,8 @@
 //  Trip+CoreDataClass.swift
 //  Travelouge
 //
-//  Created by Brendan Krekeler on 12/4/18.
-//  Copyright © 2018 Brendan Krekeler. All rights reserved.
+//  Created by Brendan Krekeler on 1/4/19.
+//  Copyright © 2019 Brendan Krekeler. All rights reserved.
 //
 //
 
@@ -15,16 +15,17 @@ public class Trip: NSManagedObject {
     var trips: [Trip]? {
         return self.rawEntries?.array as? [Trip]
     }
+    
+    convenience init?(title: String) {
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
         
-        convenience init?(title: String) {
-            let appDelegate = UIApplication.shared.delegate as? AppDelegate
-            
-            guard let context = appDelegate?.persistentContainer.viewContext else {
-                return nil
-            }
-            
-            self.init(entity: Trip.entity(), insertInto: context)
-            
-            self.title = title
+        guard let context = appDelegate?.persistentContainer.viewContext else {
+            return nil
         }
+        
+        self.init(entity: Trip.entity(), insertInto: context)
+        
+        self.title = title
+    }
+    
 }

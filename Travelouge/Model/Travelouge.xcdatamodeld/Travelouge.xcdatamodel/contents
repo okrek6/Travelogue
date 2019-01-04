@@ -9,7 +9,7 @@
     </entity>
     <entity name="Trip" representedClassName="Trip" syncable="YES">
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="rawEntries" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Entry" inverseName="trip" inverseEntity="Entry" syncable="YES"/>
+        <relationship name="rawEntries" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Entry" inverseName="trip" inverseEntity="Entry" syncable="YES"/>
     </entity>
     <elements>
         <element name="Entry" positionX="-63" positionY="-18" width="128" height="120"/>
