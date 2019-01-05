@@ -14,16 +14,15 @@ class EntriesViewController: UIViewController {
     
     @IBOutlet weak var entriesTableView: UITableView!
     
-    var entries: [Entry] = []
-    
-    let dateFormatter = DateFormatter()
     
     var trip: Trip?
+    var entries = [Entry]()
+    let dateFormatter = DateFormatter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Entries"
+        title = trip?.title ?? ""
         
         dateFormatter.timeStyle = .short
         dateFormatter.dateStyle = .short
@@ -31,22 +30,7 @@ class EntriesViewController: UIViewController {
         }
     
     override func viewWillAppear(_ animated: Bool) {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        
-        let managedContext = appDelegate.persistentContainer.viewContext
-        let fetchRequest: NSFetchRequest<Entry> = Entry.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
-        var fetchedEntries: [Entry] = []
-        do {
-            fetchedEntries = try managedContext.fetch(fetchRequest)
-        } catch {
-            print("Could not fetch")
-        }
-        
-        entries.removeAll()
-        entries = fetchedEntries
+        updateEntriesArray()
         entriesTableView.reloadData()
     }
     
@@ -71,22 +55,38 @@ class EntriesViewController: UIViewController {
     
     func deleteEntry(at indexPath: IndexPath) {
         let entry = entries[indexPath.row]
-        guard let managedContext = entry.managedObjectContext else {
+        
+        if let managedObjectContext = entry.managedObjectContext {
+            managedObjectContext.delete(entry)
+            
+            do {
+            try managedObjectContext.save()
+            self.entries.remove(at: indexPath.row)
+            entriesTableView.deleteRows(at: [indexPath], with: .automatic)
+            } catch {
+                print("it didn't work")
+                entriesTableView.reloadData()
+            }
+        }
+    }
+    
+    func updateEntriesArray() {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
         }
         
-        managedContext.delete(entry)
-        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<Entry> = Entry.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+        var fetchedEntries: [Entry] = []
         do {
-            try managedContext.save()
-            
-            entries.remove(at: indexPath.row)
-            entriesTableView.deleteRows(at: [indexPath], with: .automatic)
+            fetchedEntries = try managedContext.fetch(fetchRequest)
         } catch {
-            print("Could not delete entry")
-            
-            entriesTableView.reloadRows(at: [indexPath], with: .automatic)
+            print("Could not fetch")
         }
+        
+        entries.removeAll()
+        entries = fetchedEntries
     }
 }
 

@@ -60,29 +60,23 @@ class SingleEntriesViewController: UIViewController, UIImagePickerControllerDele
     }
     
     @IBAction func saveEntry(_ sender: Any) {
-        guard let name =
-            titleText.text?.trimmingCharacters(in: .whitespaces), !name.isEmpty else {
-            alertNotifyUser(message: "Entry not saved.\nThe name is not accessible.")
+        guard let name = titleText.text else {
+            alertNotifyUser(message: "Document not saved. The name was not given")
             return
         }
         
         let desc = descriptionText.text
         
         if entry == nil {
-            // document doesn't exist, create new one
             if let trip = trip {
                 entry = Entry(name: name, desc: desc, rawDate: Date.init(timeIntervalSinceNow: 0), image: image, trip: trip)
             }
         } else {
-            // document exists, update existing one
             if let trip = trip {
-                //document?.update(name: documentName, content: content, category: category)
                 entry?.update(name: name, desc: desc, rawDate: Date.init(timeIntervalSinceNow: 0), image: image, trip: trip)
             }
         }
-        
-       // Date.init(timeIntervalSinceNow: 0)
-        
+
         if let entry = entry {
             do {
                 let managedObjectContext = entry.managedObjectContext

@@ -38,28 +38,31 @@ public class Entry: NSManagedObject {
     convenience init?(name: String?, desc: String?, rawDate: Date?, image: UIImage?, trip: Trip) {
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         
-        guard let managedContext = appDelegate?.persistentContainer.viewContext else {
+        guard let managedContext = appDelegate?.persistentContainer.viewContext, let name = name, name != "" else {
             return nil
         }
         
         self.init(entity: Entry.entity(), insertInto: managedContext)
-        
         self.name = name
         self.desc = desc
         self.date = Date(timeIntervalSinceNow: 0)
-        
         if let image = image {
             self.rawImage = convertImageToNSData(image: image)
+        } else {
+            self.rawImage = nil
         }
-        
         self.trip = trip
     }
     
-    func update(name: String, desc: String?, rawDate: Date, image: UIImage, trip: Trip) {
+    func update(name: String, desc: String?, rawDate: Date, image: UIImage?, trip: Trip) {
         self.name = name
         self.desc = desc
         self.date = rawDate as Date
-        self.rawImage = convertImageToNSData(image: image)
+        if let image = image {
+            self.rawImage = convertImageToNSData(image: image)
+        } else {
+            self.rawImage = nil
+        }
         self.trip = trip 
     }
     
