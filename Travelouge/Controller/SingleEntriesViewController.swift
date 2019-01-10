@@ -28,16 +28,13 @@ class SingleEntriesViewController: UIViewController, UIImagePickerControllerDele
         title = ""
         
         if let entry = entry {
-            titleText.text = entry.name
+            let name = entry.name
+            titleText.text = name
             descriptionText.text = entry.desc
-            image = entry.image
-            imageView.image = image
-            title = entry.name
-            datePicker.date = entry.date!
-        } else {
-            titleText.text = ""
-            descriptionText.text = ""
-            imageView.image = nil
+            title = name
+            imageView.image = entry.image
+            datePicker.date = entry.rawDate! as Date
+            
         }
     }
     

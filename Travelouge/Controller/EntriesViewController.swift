@@ -39,14 +39,6 @@ class EntriesViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destination = segue.destination as? SingleEntriesViewController,
-            let segueIdentifier = segue.identifier, segueIdentifier == "viewEntry",
-            let row = entriesTableView.indexPathForSelectedRow?.row {
-            destination.entry = entries[row]
-        }
-    }
-    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             deleteEntry(at: indexPath)
@@ -113,6 +105,18 @@ extension EntriesViewController: UITableViewDataSource, UITableViewDelegate {
         }
         
         return cell
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? SingleEntriesViewController,
+            let segueIdentifier = segue.identifier {
+            destination.trip = trip
+            if (segueIdentifier == "viewEntry") {
+                if let row = entriesTableView.indexPathForSelectedRow?.row {
+                    destination.entry = entries[row]
+                }
+            }
+        }
     }
 }
 
