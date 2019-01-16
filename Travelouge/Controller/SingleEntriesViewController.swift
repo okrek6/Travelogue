@@ -66,11 +66,11 @@ class SingleEntriesViewController: UIViewController, UIImagePickerControllerDele
         
         if entry == nil {
             if let trip = trip {
-                entry = Entry(name: name, desc: desc, rawDate: Date.init(timeIntervalSinceNow: 0), image: image, trip: trip)
+                entry = Entry(name: name, desc: desc, rawDate: datePicker.date, image: image, trip: trip)
             }
         } else {
             if let trip = trip {
-                entry?.update(name: name, desc: desc, rawDate: Date.init(timeIntervalSinceNow: 0), image: image, trip: trip)
+                entry?.update(name: name, desc: desc, rawDate: datePicker.date, image: image, trip: trip)
             }
         }
 
